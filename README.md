@@ -15,6 +15,7 @@ This repository contains a [WP-CLI command](https://github.com/wp-cli/wp-cli)  f
 * `wp rocket cdn --enable=<enable> --host=<host> --zone=<zone>` -- Enable / Disable CDN with the specified host and zone.
 * `wp rocket export` -- Exports the WP Rocket settings as a json file to the current directory.
 * `wp rocket import --file=settings.json` -- Imports the settings contained in the provided json file.
+* `wp rocket init-cache-dir` -- Initialize cache directory.
 
 ## Installing
 
