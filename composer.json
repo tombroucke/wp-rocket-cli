@@ -3,7 +3,7 @@
     "type": "wp-cli-package",
     "description": "Add a `wp rocket` command to support the WP Rocket plugin",
     "keywords": ["wp-cli", "rocket", "cache"],
-    "homepage": "https://github.com/wp-media/wp-rocket-cli",
+    "homepage": "https://github.com/tombroucke/wp-rocket-cli",
     "license": "MIT",
     "require": {
         "php": ">=5.6"
@@ -18,8 +18,8 @@
         "email": "tom@tombroucke.be"
     }],
     "support": {
-		"issues": "https://github.com/wp-media/wp-rocket-cli/issues",
-		"source": "https://github.com/wp-media/wp-rocket-cli"
+		"issues": "https://github.com/tombroucke/wp-rocket-cli/issues",
+		"source": "https://github.com/tombroucke/wp-rocket-cli"
 	},
     "autoload": {
         "files": [ "wp-rocket-cli.php" ]
