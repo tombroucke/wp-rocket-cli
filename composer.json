@@ -1,5 +1,5 @@
 {
-    "name": "wp-media/wp-rocket-cli",
+    "name": "tombroucke/wp-rocket-cli",
     "type": "wp-cli-package",
     "description": "Add a `wp rocket` command to support the WP Rocket plugin",
     "keywords": ["wp-cli", "rocket", "cache"],
@@ -12,6 +12,10 @@
         "name": "WP Rocket Team",
         "homepage": "https://wp-rocket.me",
         "email": "contact@wp-rocket.me"
+    },{
+        "name": "Tom Broucke",
+        "homepage": "https://tombroucke.be",
+        "email": "tom@tombroucke.be"
     }],
     "support": {
 		"issues": "https://github.com/wp-media/wp-rocket-cli/issues",
