@@ -605,7 +605,7 @@ class WPRocket_CLI extends WP_CLI_Command
      *
      * @subcommand init-cache-dir
      */
-    private function init_cache_dir()
+    public function init_cache_dir($args = array(), $assoc_args = array())
     {
         if (function_exists('rocket_init_cache_dir')) {
             rocket_init_cache_dir();
