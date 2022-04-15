@@ -160,8 +160,8 @@ class WPRocket_CLI extends WP_CLI_Command
      */
     public function clean(array $args = [], array $assoc_args = [])
     {
-        if (! function_exists('rocket_clean_domain')) {
-            WP_CLI::error(' The plugin WP-Rocket seems not enabled on this site.');
+        if (! is_plugin_active('wp-rocket/wp-rocket.php')) {
+            WP_CLI::error('WP Rocket is not enabled.');
         }
 
         if (! empty($assoc_args['blog_id'])) {
@@ -310,6 +310,9 @@ class WPRocket_CLI extends WP_CLI_Command
      */
     public function preload(array $args = [], array $assoc_args = [])
     {
+        if (! is_plugin_active('wp-rocket/wp-rocket.php')) {
+            WP_CLI::error('WP Rocket is not enabled.');
+        }
 
         if (! empty($assoc_args['sitemap']) && $assoc_args['sitemap']) {
             WP_CLI::line('Triggering sitemap-based preloading.');
@@ -348,6 +351,10 @@ class WPRocket_CLI extends WP_CLI_Command
      */
     public function regenerate(array $args = [], array $assoc_args = [])
     {
+        if (! is_plugin_active('wp-rocket/wp-rocket.php')) {
+            WP_CLI::error('WP Rocket is not enabled.');
+        }
+
         if (!empty($assoc_args['file'])) {
             switch ($assoc_args['file']) {
                 case 'advanced-cache':
@@ -406,6 +413,10 @@ class WPRocket_CLI extends WP_CLI_Command
      */
     public function cdn($args = array(), $assoc_args = array())
     {
+        if (! is_plugin_active('wp-rocket/wp-rocket.php')) {
+            WP_CLI::error('WP Rocket is not enabled.');
+        }
+
         if (empty($assoc_args['enable'])) {
             WP_CLI::error('The "enable" argument must be specified.');
             return;
@@ -462,7 +473,6 @@ class WPRocket_CLI extends WP_CLI_Command
      */
     public function export($args = array(), $assoc_args = array())
     {
-
         if (! is_plugin_active('wp-rocket/wp-rocket.php')) {
             WP_CLI::error('WP Rocket is not enabled.');
         }
@@ -500,7 +510,6 @@ class WPRocket_CLI extends WP_CLI_Command
      */
     public function import($args = array(), $assoc_args = array())
     {
-
         if (! is_plugin_active('wp-rocket/wp-rocket.php')) {
             WP_CLI::error('WP Rocket is not enabled.');
         }
@@ -578,6 +587,24 @@ class WPRocket_CLI extends WP_CLI_Command
     }
 
     /**
+     * Init cache dir
+     *
+     * ## EXAMPLES
+     *
+     *     wp rocket init-cache-dir
+     *
+     * @subcommand init-cache-dir
+     */
+    public function init_cache_dir($args = array(), $assoc_args = array())
+    {
+        if (! is_plugin_active('wp-rocket/wp-rocket.php')) {
+            WP_CLI::error('WP Rocket is not enabled.');
+        }
+        
+        rocket_init_cache_dir();
+    }
+
+    /**
      * Clean WP Rocket domain and additional cache files.
      *
      * @param boolean $minify Clean also minify cache files.
@@ -593,22 +620,6 @@ class WPRocket_CLI extends WP_CLI_Command
             // Generate a new random key for minify cache file.
             update_rocket_option('minify_css_key', create_rocket_uniqid());
             update_rocket_option('minify_js_key', create_rocket_uniqid());
-        }
-    }
-
-    /**
-     * Init cache dir
-     *
-     * ## EXAMPLES
-     *
-     *     wp rocket init-cache-dir
-     *
-     * @subcommand init-cache-dir
-     */
-    public function init_cache_dir($args = array(), $assoc_args = array())
-    {
-        if (function_exists('rocket_init_cache_dir')) {
-            rocket_init_cache_dir();
         }
     }
 
